@@ -12,6 +12,8 @@ https://github.com/testing-library/jest-dom
 
 ---
 
+### 1. 버튼의 초기 상태 테스팅하기
+
 ```js
 // App.test.js
 
@@ -40,37 +42,7 @@ function App() {
 
 ---
 
-### logRoles
-
-코드가 길어서 역할이 있는 항목들이 헷갈릴 경우 logRoles를 사용하면 유용하다.
-
-```js
-import { logRoles } from "@testing-library/react";
-
-test("button has correct initial color", () => {
-  // 이 부분을 추가
-  const { container } = render(<App />);
-  logRoles(container);
-
-  const colorButton = screen.getByRole("button", { name: "Change to blue" });
-
-  expect(colorButton).toHaveStyle({ backgroundColor: "red" });
-});
-```
-
-logRoles(container); 에 대한 출력
-
-```
-  console.log
-    button:
-
-    Name "Change to blue":
-    <button
-      style="background-color: red;"
-    />
-```
-
----
+### 2. 버튼을 클릭했을때 의도한 기능이 작동하는지 테스팅하기
 
 ```js
 // App.test.js
@@ -127,6 +99,38 @@ function App() {
     </div>
   );
 }
+```
+
+---
+
+### 3. logRoles
+
+코드가 길어서 역할이 있는 항목들이 헷갈릴 경우 logRoles를 사용하면 유용하다.
+
+```js
+import { logRoles } from "@testing-library/react";
+
+test("button has correct initial color", () => {
+  // 이 부분을 추가
+  const { container } = render(<App />);
+  logRoles(container);
+
+  const colorButton = screen.getByRole("button", { name: "Change to blue" });
+
+  expect(colorButton).toHaveStyle({ backgroundColor: "red" });
+});
+```
+
+logRoles(container); 에 대한 출력
+
+```
+  console.log
+    button:
+
+    Name "Change to blue":
+    <button
+      style="background-color: red;"
+    />
 ```
 
 ---
